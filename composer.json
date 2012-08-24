@@ -2,7 +2,7 @@
     "name": "elseym/content-type-negotiation-bundle",
     "description": "Enables Symfony2 apps to serve different content types under the same URI",
     "keywords": ["contenttype", "mime"],
-    "homepage": "http://github.com/elseym/content-type-negotiation-bundle,
+    "homepage": "http://github.com/elseym/content-type-negotiation-bundle",
     "type": "symfony-bundle",
     "license": "Apache2",
     "authors": [
