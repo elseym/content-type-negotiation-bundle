@@ -20,7 +20,6 @@
         "symfony/symfony": "2.1.*"
     },
     "autoload": {
-        "psr-0": { "elseym\\ContentTypeNegotiationBundle": "" }
-    },
-    "target-dir": "elseym/ContentTypeNegotiationBundle"
+        "psr-0": { "elseym": "elseym" }
+    }
 }
