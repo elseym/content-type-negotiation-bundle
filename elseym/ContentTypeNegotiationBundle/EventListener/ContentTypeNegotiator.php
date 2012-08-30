@@ -2,23 +2,29 @@
 
 namespace elseym\ContentTypeNegotiationBundle\EventListener;
 
-use \Symfony\Component\HttpKernel\Event\FilterControllerEvent;
-use \Symfony\Component\HttpFoundation\Request;
-use Monolog\Logger;
+use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Log\LoggerInterface;
 
 class ContentTypeNegotiator
 {
     /** @var Request */
-    public $request;
+    private $request;
 
-    /** @var Logger */
-    public $logger;
+    /** @var LoggerInterface */
+    private $logger;
 
     /** @var FilterControllerEvent */
     private $event;
 
     /** @var array */
     private $controller;
+
+    public function __construct(Request $request, LoggerInterface $logger)
+    {
+        $this->request = $request;
+        $this->logger = $logger;
+    }
 
     /**
      * Replaces the default controller action with one that provides data in one of the requested formats
@@ -44,7 +50,7 @@ class ContentTypeNegotiator
         }
 
         $controller = $event->getController();
-        $this->logger->debug('Chose controller action "' . array_pop($controller) . '"', array(__CLASS__));
+        $this->logger->debug('Chose controller action "' . array_pop($controller) . '"');
     }
 
     /**
@@ -53,7 +59,7 @@ class ContentTypeNegotiator
      */
     private function findControllerForContentType($type)
     {
-        $this->logger->debug('Trying to find controller for MIME "' . $type . '"', array(__CLASS__));
+        $this->logger->debug('Trying to find controller for MIME "' . $type . '"');
 
         list($type, $subtype) = explode('/', $type);
 
@@ -84,7 +90,7 @@ class ContentTypeNegotiator
      */
     private function findControllerWithAction($action)
     {
-        $this->logger->debug('Trying method "' . $action . '"', array(__CLASS__));
+        $this->logger->debug('Trying method "' . $action . '"');
 
         if (method_exists($this->getControllerObject(), $action)) {
             return array($this->getControllerObject(), $action);

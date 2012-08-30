@@ -4,9 +4,8 @@ parameters:
 services:
   elseym.content_type_negotiation.negotiator:
     class: %elseym.content_type_negotiation.negotiator.class%
-    properties:
-      request: @request
-      logger: @logger
+    arguments: [@request, @logger]
     scope: request
     tags:
       - { name: kernel.event_listener, event: kernel.controller, method: onController }
+      - { name: monolog.logger, channel: request }
