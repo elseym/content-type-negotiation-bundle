@@ -72,12 +72,12 @@ class ContentTypeNegotiator
 
 
         if ('*' !== $subtype) {
-            // ex: application/html -> indexActionHtmlText
+            // ex: text/html -> indexActionHtmlText
             if ($controller = $this->findControllerWithAction($this->getControllerMethod()
                                                               . ucfirst($subtype) . ucfirst($type))) {
                 return $controller;
             }
-            // ex: application/html -> indexActionHtml
+            // ex: text/html -> indexActionHtml
             return $this->findControllerWithAction($this->getControllerMethod() . ucfirst($subtype));
         }
         // ex: text/* ->  indexActionText
