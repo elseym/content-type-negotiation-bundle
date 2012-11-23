@@ -1,6 +1,6 @@
 {
     "name": "elseym/content-type-negotiation-bundle",
-    "description": "Enables Symfony2 apps to serve different content types under the same URI",
+    "description": "Enables Symfony2 apps to serve different content types under the same URI based on the HTTP Accept header.",
     "keywords": ["contenttype", "mime"],
     "homepage": "http://github.com/elseym/content-type-negotiation-bundle",
     "type": "symfony-bundle",
